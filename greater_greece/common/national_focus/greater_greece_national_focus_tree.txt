@@ -1,0 +1,91 @@
+﻿search_filter_prios = {
+	FOCUS_FILTER_POLITICAL = 1010
+
+	
+ 
+	
+	
+	FOCUS_FILTER_RESEARCH = 522
+
+	
+	FOCUS_FILTER_INDUSTRY = 509
+
+}
+
+focus_tree = {
+	id = greater_greece_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = GRE
+			has_dlc = "Death or Dishonor"
+		}
+	}
+	
+	default = yes
+	reset_on_civilwar = no
+
+	initial_show_position = {
+		focus = industrial_effort
+	}
+    
+    focus = {
+		id = GGRE_army_effort
+        text = "Rebuild the Army"
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 0
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 1.0
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+    
+    focus = {
+        id = GGRE_sack_the_prime_minster
+        text = "Sack the Prime Minister"
+        icon = GFX_focus_ger_oppose_hitler
+        x = 2
+        y = 0
+        cost = 10
+        available_if_capitulated = no
+        available = {
+            date > 1936.1.26
+        }
+        
+        completion_reward = {
+            add_stability=0.1
+            add_political_power=100
+        }
+    }
+
+	# political paths
+    # 0. First step: Sack the Prime Minister
+    # 
+    # 1. Move toward Democracy
+    # 2. Move toward Fascism
+    # 3. Move toward Communism
+    # 4. Build the Dictatorship
+    # 
+    # Foreign policy paths
+    # 1. Allies
+    # 2. Axis
+    # 3. Comintern
+    # 4. Greater Greece
+    # 5. Byzantine Empire
+    
+
+}
