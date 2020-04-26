@@ -133,7 +133,8 @@ focus_tree = {
 		icon = GFX_goal_generic_support_democracy
 		
 		prerequisite = { focus = GGRE_sack_the_prime_minister }
-		y = 1 x = 2
+		y = 1 
+        x = 6
 		cost = 10
 		completion_reward = {
 			set_politics = { ruling_party = democratic elections_allowed = yes }
