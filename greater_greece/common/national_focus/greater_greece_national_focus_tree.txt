@@ -55,20 +55,73 @@ focus_tree = {
 	}
     
     focus = {
-        id = GGRE_sack_the_prime_minster
+        id = GGRE_sack_the_prime_minister
         text = "Sack the Prime Minister"
         icon = GFX_focus_ger_oppose_hitler
-        x = 2
+        x = 3
         y = 0
-        cost = 10
+        cost = .1
         available_if_capitulated = no
-        available = {
-            date > 1936.1.26
+        #available = {
+        #    date > 1936.1.26
+        #}
+        
+        #bypass = {
+		#	has_country_flag = GRE_mackensen_dead
+		#	NOT = { has_government = democratic }
+		#}
+        
+        hidden_effect {
+            kill_country_leader = yes
         }
         
         completion_reward = {
             add_stability=0.1
             add_political_power=100
+            create_country_leader = {
+                name = "King George II"
+                desc = "POLITICS_AUGUST_VON_MACKENSEN_DESC"
+                picture = GFX_portrait_ger_august_von_mackensen
+                expire = "1965.1.1"
+                ideology = despotism
+                traits = {
+                    anti_democrat imperial_connections
+                }
+			}
+        }
+    }
+    
+    focus = {
+        id = GGRE_renew_the_monarchy
+        text = "Renew the Monarchy"
+        
+        prerequisite = { focus = GGRE_sack_the_prime_minister }
+        y=1
+        x=2
+        cost = 10
+        completion_reward = {
+            add_timed_idea = {
+                idea = GRE_renew_the_monarchy
+                days = 720
+            }
+        }
+    }
+    
+    focus = {
+        id = GGRE_third_hellenic
+        text = "Third Hellenic Civilization"
+        
+        prerequisite = { focus = GGRE_sack_the_prime_minister }
+        y=1
+        x=4
+        cost = 10
+        completion_reward = {
+            set_politics = { ruling_party = fascism elections_allowed = no }
+            add_popularity = { ideology = fascism popularity = 0.15 }
+            add_timed_idea = {
+                idea = GRE_third_hellenic
+                days = 720
+            }
         }
     }
 
