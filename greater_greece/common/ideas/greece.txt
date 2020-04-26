@@ -59,11 +59,11 @@ ideas = {
         picture = generic_fascism_drift_bonus
 
         modifier = {
-            fascism_drift = 0.1
+            fascism_drift = 0.2
         }
     }
 	
-	GRE_restored_republic = {
+	GRE_restored_constitution = {
 		allowed = {
 			always = no
 		}
@@ -73,7 +73,21 @@ ideas = {
 		picture = generic_democratic_drift_bonus
 		
 		modifer = {
-			fascism_drift = .1
+			democratic_drift = .2
+		}
+	}
+	
+	GRE_honored_parliament = {
+		allowed = {
+			always = no
+		}
+		
+		removal_cost = -1
+		
+		picture = generic_communism_drift_bonus
+		
+		modifer = {
+			communism_drift = .2
 		}
 	}
 }

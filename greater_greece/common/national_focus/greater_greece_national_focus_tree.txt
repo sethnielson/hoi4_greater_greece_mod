@@ -57,7 +57,7 @@ focus_tree = {
     focus = {
         id = GGRE_sack_the_prime_minister
         text = "Sack the Prime Minister"
-        icon = GFX_focus_ger_oppose_hitler
+        icon = GFX_focus_eng_motion_of_no_confidence
         x = 3
         y = 0
         cost = .1
@@ -128,23 +128,58 @@ focus_tree = {
     }
 	
 	focus = {
-		id = GGRE_restore_the_republic
-		text = "Restore the Republic"
-		icon = GFX_goal_generic_support_democracy
+		id = GGRE_restore_the_constitution
+		text = "Restore the 1927 Constitution"
+		icon = GFX_focus_generic_treaty
 		
 		prerequisite = { focus = GGRE_sack_the_prime_minister }
-		y = 1 
+		y = 1
         x = 6
 		cost = 10
 		completion_reward = {
-			set_politics = { ruling_party = democratic elections_allowed = yes }
-			add_popularity = { ideology = fascism popularity = .15 }
+			add_popularity = { ideology = democratic popularity = .15 }
 			add_timed_idea = {
-				idea = GRE_restored_republic
+				idea = GRE_restored_constitution
 				days = 720
 			}
 		}
 	}
+	
+	focus = {
+		id = GGRE_establish_republic
+		text = "Establish the Third Republic"
+		icon = GFX_goal_support_democracy
+		
+		prerequisite = { focus = GGRE_restore_the_constitution }
+		available = {
+			democratic > .5
+		}
+		y = 3
+		x = 6
+		cost = 10
+		completion_reward = {
+			set_politics = { ideology = democratic elections_allowed = yes }
+		}
+	}
+	
+	focus = {
+		id = GGRE_hung_parliament
+		text = "Honor the Hung Parliament"
+		icon = GFX_goal_support_communism
+		
+		prerequisite = { focus = GGRE_sack_the_prime_minister }
+		y = 1
+		x = 8
+		cost = 10
+		completion_reward = {
+			add_popularity = {ideology = communism popularity = .15 }
+			add_timed_idea = {
+				idea = GRE_honored_parliament
+				days = 720
+			}
+		}
+	}
+	
 
 	# political paths
     # 0. First step: Sack the Prime Minister
