@@ -94,7 +94,8 @@ focus_tree = {
     focus = {
         id = GGRE_renew_the_monarchy
         text = "Renew the Monarchy"
-        
+        icon = GFX_focus_generic_monarchy_2
+		
         prerequisite = { focus = GGRE_sack_the_prime_minister }
         y=1
         x=2
@@ -110,6 +111,7 @@ focus_tree = {
     focus = {
         id = GGRE_third_hellenic
         text = "Third Hellenic Civilization"
+		icon = GFX_goal_support_fascism
         
         prerequisite = { focus = GGRE_sack_the_prime_minister }
         y=1
@@ -124,6 +126,24 @@ focus_tree = {
             }
         }
     }
+	
+	focus = {
+		id = GGRE_restore_the_republic
+		text = "Restore the Republic"
+		icon = GFX_goal_generic_support_democracy
+		
+		prerequisite = { focus = GGRE_sack_the_prime_minister }
+		y = 1 x = 2
+		cost = 10
+		completion_reward = {
+			set_politics = { ruling_party = democratic elections_allowed = yes }
+			add_popularity = { ideology = fascism popularity = .15 }
+			add_timed_idea = {
+				idea = GRE_restored_republic
+				days = 720
+			}
+		}
+	}
 
 	# political paths
     # 0. First step: Sack the Prime Minister
