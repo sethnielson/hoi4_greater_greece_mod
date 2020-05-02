@@ -29,36 +29,15 @@ focus_tree = {
 	reset_on_civilwar = no
 
 	initial_show_position = {
-		focus = industrial_effort
+		focus = GGRE_sack_the_prime_minister #I don't know if i was supposed to change this. :|
 	}
     
-    focus = {
-		id = GGRE_army_effort
-        text = "Rebuild the Army"
-		icon = GFX_goal_generic_allies_build_infantry
-		x = 1
-		y = 0
-		cost = 10
-		search_filters = {  FOCUS_FILTER_RESEARCH }
-		
-		available_if_capitulated = yes
-
-		completion_reward = {
-			army_experience = 10
-			add_tech_bonus = {
-				name = land_doc_bonus
-				bonus = 1.0
-				uses = 1
-				category = land_doctrine
-			}
-		}
-	}
-    
+    #beginning of political route
     focus = {
         id = GGRE_sack_the_prime_minister
         text = "Sack the Prime Minister"
         icon = GFX_focus_eng_motion_of_no_confidence
-        x = 3
+        x = 4
         y = 0
         cost = 1.0
         available_if_capitulated = no
@@ -85,20 +64,21 @@ focus_tree = {
                 expire = "1965.1.1"
                 ideology = despotism
                 traits = {
-                    anti_democrat imperial_connections
+                    imperial_connections
                 }
 			}
         }
     }
-    
+    #beginning of the unaligned route
     focus = {
         id = GGRE_renew_the_monarchy
         text = "Renew the Monarchy"
         icon = GFX_focus_generic_monarchy_2
 		
+		mutually_exclusive = { focus = GGRE_third_hellenic focus = GGRE_hung_parliament focus = GGRE_restore_the_constitution}
         prerequisite = { focus = GGRE_sack_the_prime_minister }
         y=1
-        x=2
+        x=1
         cost = 10
         completion_reward = {
             add_timed_idea = {
@@ -107,15 +87,225 @@ focus_tree = {
             }
         }
     }
-    
+	
+	focus = {
+		id = GGRE_plea_parents
+		text = "Plea to our Parents"
+		icon = GFX_focus_chi_british_cooperation
+		
+		mutually_exclusive = {focus = GGRE_plea_brothers}
+		prerequisite {focus = GGRE_renew_the_monarchy}
+		y = 2
+		x = 1
+		cost = 10
+		completion_reward = {
+			ENG = { give_guarantee = GRE }
+		}
+	}
+	
+	focus = {
+		id = GGRE_plea_brothers
+		text = "Plea to our Brothers"
+		icon = GFX_focus_chi_mission_to_germany
+		available = {
+			GER = { has_government = neutrality }
+		}
+		
+		mutually_exclusive = {focus = GGRE_plea_parents}
+		prerequisite {focus = GGRE_renew_the_monarchy}
+		y = 2
+		x = 3
+		cost = 10
+		completion_reward = {
+			GER = { give_guarantee = GRE)
+		}
+	}
+	
+	focus = {
+		id = GGRE_imperial_legacy
+		text = "Imperial Legacy"
+		icon =
+		
+		prerequisite = { focus = GGRE_plea_brothers focus = GGRE_plea_parents }
+		y = 3
+		x = 2
+		cost = 10
+		completion_reward = {
+			add_idea = {
+				idea = GGRE_imperial_legacy_idea
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT	
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_latin_influences
+		text = "Strengthen our Latin Influences"
+		icon =
+		
+		prerequisite = { focus = GGRE_imperial_legacy }
+		y = 4
+		x = 2
+		cost = 10
+		completion_reward = {
+			add_idea = {
+				id = GGRE_latin_influences_idea
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_claim_asia
+		text = "Claim Asia Minor"
+		icon =
+		
+		available = {
+			is_subject = no
+			TUR = {
+				exists = yes
+				NOT = { has_war_with = GRE }
+			}
+		}
+
+		bypass = {
+			TUR = {
+				is_puppet_of = GRE
+			}
+		}
+		
+		prerequisite = { focus = GGRE_latin_influences }
+		y = 5
+		x = 1
+		cost = 10
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = TUR
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_balkan_reintegration
+		text = "Reintegrate the Balkans"
+		icon =
+		
+		prerequisite = { focus = GGRE_latin_influences }
+		y = 5
+		x = 3
+		cost = 10
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = ROM
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = YUG
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = BUL
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_crusade
+		text = "Call the 10th Crusade"
+		icon = 
+		
+		prerequisite = { focus = GGRE_balkan_reintegration }
+		prerequisite = { focus = GGRE_claim_asia }
+		y = 6
+		x = 1
+		cost = 10
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GGRE_revenge_crusade
+		text = "Revenge the 4th Crusade"
+		icon = 
+		
+		prerequisite = { focus = GGRE_balkan_reintegration }
+		prerequisite = { focus = GGRE_claim_asia }
+		y = 6
+		x = 3
+		cost = 10
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GGRE_rome
+		text = "Return of the Roman Empire"
+		icon = 
+		
+		prerequisite = { focus = GGRE_crusade }
+		prerequisite = { focus = GGRE_revenge_crusade }
+		y = 7
+		x = 2
+		cost = 10
+		completion_reward = {
+		}
+	}
+    #beginning of the fascist route
     focus = {
         id = GGRE_third_hellenic
         text = "Third Hellenic Civilization"
 		icon = GFX_goal_support_fascism
         
+		mutually_exclusive = { focus = GGRE_renew_the_monarchy focus = GGRE_hung_parliament focus = GGRE_restore_the_constitution}
         prerequisite = { focus = GGRE_sack_the_prime_minister }
         y=1
-        x=4
+        x=5
         cost = 10
         completion_reward = {
             set_politics = { ruling_party = fascism elections_allowed = no }
@@ -126,15 +316,16 @@ focus_tree = {
             }
         }
     }
-	
+	#beginning of the democratic route
 	focus = {
 		id = GGRE_restore_the_constitution
 		text = "Restore the 1927 Constitution"
 		icon = GFX_focus_generic_treaty
 		
+		mutually_exclusive = { focus = GGRE_third_hellenic focus = GGRE_hung_parliament focus = GGRE_restore_the_constitution}
 		prerequisite = { focus = GGRE_sack_the_prime_minister }
 		y = 1
-        x = 6
+        x = 7
 		cost = 10
 		completion_reward = {
 			add_popularity = { ideology = democratic popularity = .15 }
@@ -154,22 +345,23 @@ focus_tree = {
 		available = {
 			democratic > .5
 		}
-		y = 3
-		x = 6
+		y = 2
+		x = 7
 		cost = 10
 		completion_reward = {
 			set_politics = { ideology = democratic elections_allowed = yes }
 		}
 	}
-	
+	#beginning of the communist route
 	focus = {
 		id = GGRE_hung_parliament
 		text = "Honor the Hung Parliament"
 		icon = GFX_goal_support_communism
 		
+		mutually_exclusive = { focus = GGRE_third_hellenic focus = GGRE_renew_the_monarchy focus = GGRE_restore_the_constitution}
 		prerequisite = { focus = GGRE_sack_the_prime_minister }
 		y = 1
-		x = 8
+		x = 9
 		cost = 1.0
 		completion_reward = {
 			add_popularity = {ideology = communism popularity = .15 }
@@ -187,13 +379,34 @@ focus_tree = {
         
         prerequisite = { focus = GGRE_hung_parliament }
         y = 2
-        x = 8
+        x = 9
         cost = 1.0
         completion_reward = {
             country_event = { id = peoples_greece.1 }
         }
     }
-	
+	#Beginning of the military route
+	focus = {
+		id = GGRE_army_effort
+        text = "Rebuild the Army"
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 20
+		y = 0
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 10
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 1.0
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
 
 	# political paths
     # 0. First step: Sack the Prime Minister

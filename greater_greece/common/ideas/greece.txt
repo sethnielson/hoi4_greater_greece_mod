@@ -49,6 +49,33 @@ ideas = {
         }
     }
     
+	GGRE_imperial_legacy_idea = {
+		allowed = {
+			always = no
+		}
+		
+		removal_cost = -1
+		
+		picture = generic_morale_bonus
+		
+		modifier = {
+			war_support_factor = .15
+		}
+	}
+	
+	GGRE_latin_influences_idea = {
+		allowed = {
+			always = no
+		}
+		
+		removal_cost = -1
+		
+		picutre = orthodox_church_support
+		
+		modifer = {
+			stability_factor = .15
+		}
+	
     GRE_third_hellenic = {
         allowed = {
             always = no

@@ -4,7 +4,7 @@
 country_event = {
 	id = peoples_greece.1
 	title = "The People's Revolt for Greece"
-	desc = "Revolt"
+	desc = "The people's desire to govern themselves has been boiling under the surface for months since the Hung Parliament, now we are the spark that ignites the People's Revolt for Greece!"
 	#picture = GFX_report_event_ger_civil_war
 
 	is_triggered_only = yes
@@ -13,15 +13,15 @@ country_event = {
 	option = {
 		name = peoples_greece.1.a
 		hidden_effect = {
-			#set_capital = 55
+			set_capital = 186
 			start_civil_war = {
-				ruling_party = communism
-				ideology = communism
+				ruling_party = neutrality
+				ideology = neutrality
 				size = 0.5
-				capital = 186
-				states = { 186 185 731 }
+				capital = 47
+				states = { 182 187 47 184 }
 			}
-			set_party_name = { ideology = neutrality long_name = "Greek People's Liberation Front" name = "Red Greek" }
+			set_party_name = { ideology = communism long_name = "Greek People's Liberation Front" name = "Red Greek" }
 			#load_oob = "GER_German_Civil_War_neutrality"
 			#random_other_country = {
 			#	limit = {
@@ -40,7 +40,7 @@ country_event = {
 			}
 			add_popularity = {
 				ideology = communism
-				popularity = 0.35
+				popularity = 0.80
 			}
 			add_popularity = {
 				ideology = democratic
@@ -48,11 +48,11 @@ country_event = {
 			}
 			add_popularity = {
 				ideology = neutrality
-				popularity = 0.30
+				popularity = 0.0
 			}
 			add_popularity = {
 				ideology = fascism
-				popularity = 0.1
+				popularity = 0.0
 			}	
 			set_stability = 0.9
 			set_war_support = 0.8
