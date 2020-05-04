@@ -117,14 +117,14 @@ focus_tree = {
 		x = 3
 		cost = 10
 		completion_reward = {
-			GER = { give_guarantee = GRE)
+			GER = { give_guarantee = GRE }
 		}
 	}
 	
 	focus = {
 		id = GGRE_imperial_legacy
 		text = "Imperial Legacy"
-		icon =
+		#icon = 
 		
 		prerequisite = { focus = GGRE_plea_brothers focus = GGRE_plea_parents }
 		y = 3
