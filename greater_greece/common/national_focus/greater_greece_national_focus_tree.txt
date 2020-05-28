@@ -124,7 +124,7 @@ focus_tree = {
 	focus = {
 		id = GGRE_imperial_legacy
 		text = "Imperial Legacy"
-		#icon = 
+		icon = GFX_focus_generic_monarchy_1
 		
 		prerequisite = { focus = GGRE_plea_brothers focus = GGRE_plea_parents }
 		y = 3
@@ -186,7 +186,7 @@ focus_tree = {
 	focus = {
 		id = GGRE_latin_influences
 		text = "Strengthen our Latin Influences"
-		icon =
+		icon = GFX_focus_generic_diplomatic_treaty
 		
 		prerequisite = { focus = GGRE_imperial_legacy }
 		y = 4
@@ -202,10 +202,9 @@ focus_tree = {
 	focus = {
 		id = GGRE_claim_asia
 		text = "Claim Asia Minor"
-		icon =
+		icon = GFX_goal_generic_position_armies
 		
 		available = {
-			is_subject = no
 			TUR = {
 				exists = yes
 				NOT = { has_war_with = GRE }
@@ -223,9 +222,34 @@ focus_tree = {
 		x = 1
 		cost = 10
 		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = TUR
+			add_state_core = 341
+			add_state_claim = 344
+			add_state_claim = 343
+			add_state_claim = 49
+			add_state_claim = 342
+			add_state_claim = 340
+			add_state_claim = 353
+			add_state_claim = 339
+			add_state_claim = 347
+			add_state_claim = 356
+			add_state_claim = 348
+			add_state_claim = 346
+			add_state_claim = 350
+			add_state_claim = 345
+			add_state_claim = 355
+			add_state_claim = 349
+			add_state_claim = 354
+			add_state_claim = 352
+			if = {
+				limit = {
+					TUR = {
+						exists = no
+					}
+					create_wargoal = {
+						type = annex_everything
+						target = TUR
+					}
+				}
 			}
 		}
 	}
@@ -233,24 +257,64 @@ focus_tree = {
 	focus = {
 		id = GGRE_balkan_reintegration
 		text = "Reintegrate the Balkans"
-		icon =
+		icon = GFX_goal_generic_political_pressure
 		
 		prerequisite = { focus = GGRE_latin_influences }
 		y = 5
 		x = 3
 		cost = 10
 		completion_reward = {
-			create_wargoal = {
-				type = annex_everything
-				target = ROM
+			add_state_claim = 44
+			if = {
+				limit = {
+					ALB = {
+						exists = yes
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = ALB
+				}
 			}
-			create_wargoal = {
-				type = annex_everything
-				target = YUG
+			add_state_claim = 82
+			add_state_claim = 81
+			add_state_claim = 46
+			add_state_claim = 77
+			#No war goal on Romania
+			add_state_claim = 48
+			add_state_claim = 212
+			add_state_claim = 211
+			if = {
+				limit = {
+					BUL = {
+						exists = yes
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = BUL
+				}
 			}
-			create_wargoal = {
-				type = annex_everything
-				target = BUL
+			add_state_claim = 102
+			add_state_claim = 103
+			add_state_claim = 109
+			add_state_claim = 104
+			add_state_claim = 45
+			add_state_claim = 107
+			add_state_claim = 105
+			add_state_claim = 108
+			add_state_claim = 106
+			add_state_claim = 764
+			if = {
+				limit = {
+					YUG = {
+						exists = yes
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = YUG
+				}
 			}
 		}
 	}
@@ -258,7 +322,7 @@ focus_tree = {
 	focus = {
 		id = GGRE_crusade
 		text = "Call the 10th Crusade"
-		icon = 
+		icon = GFX_focus_mex_restore_the_army_of_christ
 		
 		prerequisite = { focus = GGRE_balkan_reintegration }
 		prerequisite = { focus = GGRE_claim_asia }
@@ -266,16 +330,16 @@ focus_tree = {
 		x = 1
 		cost = 10
 		completion_reward = {
+			
 		}
 	}
 	
 	focus = {
 		id = GGRE_revenge_crusade
 		text = "Revenge the 4th Crusade"
-		icon = 
+		icon = GFX_focus_usa_attack_italy
 		
-		prerequisite = { focus = GGRE_balkan_reintegration }
-		prerequisite = { focus = GGRE_claim_asia }
+		prerequisite = { focus = GGRE_crusade }
 		y = 6
 		x = 3
 		cost = 10
@@ -283,19 +347,6 @@ focus_tree = {
 		}
 	}
 	
-	focus = {
-		id = GGRE_rome
-		text = "Return of the Roman Empire"
-		icon = 
-		
-		prerequisite = { focus = GGRE_crusade }
-		prerequisite = { focus = GGRE_revenge_crusade }
-		y = 7
-		x = 2
-		cost = 10
-		completion_reward = {
-		}
-	}
     #beginning of the fascist route
     focus = {
         id = GGRE_third_hellenic
