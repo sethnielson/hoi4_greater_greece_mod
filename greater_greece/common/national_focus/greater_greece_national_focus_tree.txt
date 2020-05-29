@@ -35,7 +35,7 @@ focus_tree = {
     #beginning of political route
     focus = {
         id = GGRE_sack_the_prime_minister
-        text = "Sack the Prime Minister"
+        #text = "Sack the Prime Minister"
         icon = GFX_focus_eng_motion_of_no_confidence
         x = 4
         y = 0
@@ -78,7 +78,7 @@ focus_tree = {
 		mutually_exclusive = { focus = GGRE_third_hellenic focus = GGRE_hung_parliament focus = GGRE_restore_the_constitution}
         prerequisite = { focus = GGRE_sack_the_prime_minister }
         y=1
-        x=1
+        x=2
         cost = 10
         completion_reward = {
             add_timed_idea = {
@@ -245,11 +245,11 @@ focus_tree = {
 					TUR = {
 						exists = no
 					}
-					create_wargoal = {
-						type = annex_everything
-						target = TUR
-					}
-				}
+                }
+                create_wargoal = {
+                    type = annex_everything
+                    target = TUR
+                }
 			}
 		}
 	}
@@ -327,7 +327,7 @@ focus_tree = {
 		prerequisite = { focus = GGRE_balkan_reintegration }
 		prerequisite = { focus = GGRE_claim_asia }
 		y = 6
-		x = 1
+		x = 2
 		cost = 10
 		completion_reward = {
 			
@@ -340,8 +340,8 @@ focus_tree = {
 		icon = GFX_focus_usa_attack_italy
 		
 		prerequisite = { focus = GGRE_crusade }
-		y = 6
-		x = 3
+		y = 7
+		x = 2
 		cost = 10
 		completion_reward = {
 		}
@@ -394,13 +394,13 @@ focus_tree = {
 		
 		prerequisite = { focus = GGRE_restore_the_constitution }
 		available = {
-			democratic > .5
+			democratic > 0.5
 		}
 		y = 2
 		x = 7
 		cost = 10
 		completion_reward = {
-			set_politics = { ideology = democratic elections_allowed = yes }
+			set_politics = { ruling_party = democratic elections_allowed = yes }
 		}
 	}
 	#beginning of the communist route

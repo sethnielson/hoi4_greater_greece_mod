@@ -2,157 +2,161 @@ ideas = {
 
 	political_advisor = {
 
-	GRE_damaskinos = {
+        GRE_damaskinos = {
 
-		picture = generic_political_advisor_europe_5
-		
-		allowed = {
-			original_tag = GRE
-		}
-		
-		traits = { compassionate_gentleman }
-	}
-
-	GRE_georgios_papandreou = {
-
-		picture = generic_political_advisor_europe_2
-			
-		allowed = {
-			original_tag = GRE
-		}
-		
-		traits = { silent_workhorse }
-	}
-
-	GRE_evripidis_bakirtris = {
-
-		picture = generic_political_advisor_europe_3
-		
-		allowed = {
-			original_tag = GRE
-		}
-		
-		traits = { war_industrialist }
-	}
-    
-    GRE_renew_the_monarchy = {
-        allowed = {
-            always = no
+            picture = generic_political_advisor_europe_5
+            
+            allowed = {
+                original_tag = GRE
+            }
+            
+            traits = { compassionate_gentleman }
         }
 
-        removal_cost = -1
+        GRE_georgios_papandreou = {
 
-        picture = generic_neutrality_drift_bonus
+            picture = generic_political_advisor_europe_2
+                
+            allowed = {
+                original_tag = GRE
+            }
+            
+            traits = { silent_workhorse }
+        }
 
-        modifier = {
-            neutrality_drift = 0.1
+        GRE_evripidis_bakirtris = {
+
+            picture = generic_political_advisor_europe_3
+            
+            allowed = {
+                original_tag = GRE
+            }
+            
+            traits = { war_industrialist }
         }
     }
     
-	GGRE_imperial_legacy_idea = {
-		allowed = {
-			always = no
-		}
-		
-		removal_cost = -1
-		
-		picture = generic_morale_bonus
-		
-		modifier = {
-			war_support_factor = .15
-		}
-	}
-	
-	GGRE_latin_influences_idea = {
-		allowed = {
-			always = no
-		}
-		
-		removal_cost = -1
-		
-		picutre = orthodox_church_support
-		
-		modifer = {
-			stability_factor = .15
-		}
-	
-    GRE_third_hellenic = {
-        allowed = {
-            always = no
+    country = {
+    
+        GRE_renew_the_monarchy = {
+            allowed = {
+                always = no
+            }
+
+            removal_cost = -1
+
+            picture = generic_neutrality_drift_bonus
+
+            modifier = {
+                neutrality_drift = 0.1
+            }
         }
+        
+        GGRE_imperial_legacy_idea = {
+            allowed = {
+                always = no
+            }
+            
+            removal_cost = -1
+            
+            picture = generic_morale_bonus
+            
+            modifier = {
+                war_support_factor = 0.15
+            }
+        }
+        
+        GGRE_latin_influences_idea = {
+            allowed = {
+                always = no
+            }
+            
+            removal_cost = -1
+            
+            picutre = orthodox_church_support
+            
+            modifer = {
+                stability_factor = 0.15
+            }
+        }
+        
+        GRE_third_hellenic = {
+            allowed = {
+                always = no
+            }
 
-        removal_cost = -1
+            removal_cost = -1
 
-        picture = generic_fascism_drift_bonus
+            picture = generic_fascism_drift_bonus
 
-        modifier = {
-            fascism_drift = 0.2
+            modifier = {
+                fascism_drift = 0.2
+            }
+        }
+        
+        GRE_restored_constitution = {
+            allowed = {
+                always = no
+            }
+            
+            removal_cost = -1
+            
+            picture = generic_democratic_drift_bonus
+            
+            modifier = {
+                democratic_drift = 0.2
+            }
+        }
+        
+        GRE_honored_parliament = {
+            allowed = {
+                always = no
+            }
+            
+            removal_cost = -1
+            
+            picture = generic_communism_drift_bonus
+            
+            modifier = {
+                communism_drift = 0.2
+            }
         }
     }
-	
-	GRE_restored_constitution = {
-		allowed = {
-			always = no
-		}
-		
-		removal_cost = -1
-		
-		picture = generic_democratic_drift_bonus
-		
-		modifier = {
-			democratic_drift = 0.2
-		}
-	}
-	
-	GRE_honored_parliament = {
-		allowed = {
-			always = no
-		}
-		
-		removal_cost = -1
-		
-		picture = generic_communism_drift_bonus
-		
-		modifier = {
-			communism_drift = 0.2
-		}
-	}
-}
 
-theorist = {
+    theorist = {
 
-	GRE_nikolaos_plastiras = {
-		ledger = army
-				
-		picture = generic_army_europe_3
+        GRE_nikolaos_plastiras = {
+            ledger = army
+                    
+            picture = generic_army_europe_3
 
-		allowed = {
-			original_tag = GRE
-		}
-		
-		research_bonus = {
-			land_doctrine = 0.10
-		}
-		
-		traits = { military_theorist }
-	}
+            allowed = {
+                original_tag = GRE
+            }
+            
+            research_bonus = {
+                land_doctrine = 0.10
+            }
+            
+            traits = { military_theorist }
+        }
 
-	GRE_eleftherios_venizelos = {
-		ledger = air
-				
-		picture = generic_political_advisor_europe_1
-			
-		allowed = {
-			original_tag = GRE
-		}
-		
-		research_bonus = {
-			air_doctrine = 0.10
-		}
-		
-		traits = { air_warfare_theorist }
-	}
-}
+        GRE_eleftherios_venizelos = {
+            ledger = air
+                    
+            picture = generic_political_advisor_europe_1
+                
+            allowed = {
+                original_tag = GRE
+            }
+            
+            research_bonus = {
+                air_doctrine = 0.10
+            }
+            
+            traits = { air_warfare_theorist }
+        }
+    }
 	# MILITARY
 	army_chief = {
 		
