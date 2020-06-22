@@ -35,9 +35,8 @@ focus_tree = {
     #beginning of political route
     focus = {
         id = GGRE_sack_the_prime_minister
-        #text = "Sack the Prime Minister"
         icon = GFX_focus_eng_motion_of_no_confidence
-        x = 4
+        x = 13
         y = 0
         cost = 1.0
         available_if_capitulated = no
@@ -72,13 +71,12 @@ focus_tree = {
     #beginning of the unaligned route
     focus = {
         id = GGRE_renew_the_monarchy
-        text = "Renew the Monarchy"
         icon = GFX_focus_generic_monarchy_2
 		
 		mutually_exclusive = { focus = GGRE_third_hellenic focus = GGRE_hung_parliament focus = GGRE_restore_the_constitution}
         prerequisite = { focus = GGRE_sack_the_prime_minister }
         y=1
-        x=2
+        x=9
         cost = 10
         completion_reward = {
             add_timed_idea = {
@@ -90,13 +88,12 @@ focus_tree = {
 	
 	focus = {
 		id = GGRE_plea_parents
-		text = "Plea to our Parents"
 		icon = GFX_focus_chi_british_cooperation
 		
 		mutually_exclusive = {focus = GGRE_plea_brothers}
 		prerequisite {focus = GGRE_renew_the_monarchy}
 		y = 2
-		x = 1
+		x = 8
 		cost = 10
 		completion_reward = {
 			ENG = { give_guarantee = GRE }
@@ -105,7 +102,6 @@ focus_tree = {
 	
 	focus = {
 		id = GGRE_plea_brothers
-		text = "Plea to our Brothers"
 		icon = GFX_focus_chi_mission_to_germany
 		available = {
 			GER = { has_government = neutrality }
@@ -114,7 +110,7 @@ focus_tree = {
 		mutually_exclusive = {focus = GGRE_plea_parents}
 		prerequisite {focus = GGRE_renew_the_monarchy}
 		y = 2
-		x = 3
+		x = 10
 		cost = 10
 		completion_reward = {
 			GER = { give_guarantee = GRE }
@@ -123,12 +119,11 @@ focus_tree = {
 	
 	focus = {
 		id = GGRE_imperial_legacy
-		text = "Imperial Legacy"
 		icon = GFX_focus_generic_monarchy_1
 		
 		prerequisite = { focus = GGRE_plea_brothers focus = GGRE_plea_parents }
 		y = 3
-		x = 2
+		x = 9
 		cost = 10
 		completion_reward = {
 			add_idea = {
@@ -184,24 +179,22 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = GGRE_latin_influences
-		text = "Strengthen our Latin Influences"
+		id = GGRE_byzantine_influences
 		icon = GFX_focus_generic_diplomatic_treaty
 		
 		prerequisite = { focus = GGRE_imperial_legacy }
 		y = 4
-		x = 2
+		x = 9
 		cost = 10
 		completion_reward = {
 			add_idea = {
-				id = GGRE_latin_influences_idea
+				id = GGRE_byzantine_influences_idea
 			}
 		}
 	}
 	
 	focus = {
 		id = GGRE_claim_asia
-		text = "Claim Asia Minor"
 		icon = GFX_goal_generic_position_armies
 		
 		available = {
@@ -217,9 +210,9 @@ focus_tree = {
 			}
 		}
 		
-		prerequisite = { focus = GGRE_latin_influences }
+		prerequisite = { focus = GGRE_byzantine_influences }
 		y = 5
-		x = 1
+		x = 8
 		cost = 10
 		completion_reward = {
 			add_state_core = 341
@@ -259,9 +252,9 @@ focus_tree = {
 		text = "Reintegrate the Balkans"
 		icon = GFX_goal_generic_political_pressure
 		
-		prerequisite = { focus = GGRE_latin_influences }
+		prerequisite = { focus = GGRE_byzantine_influences }
 		y = 5
-		x = 3
+		x = 10
 		cost = 10
 		completion_reward = {
 			add_state_claim = 44
@@ -319,31 +312,33 @@ focus_tree = {
 		}
 	}
 	
-	focus = {
-		id = GGRE_crusade
-		text = "Call the 10th Crusade"
-		icon = GFX_focus_mex_restore_the_army_of_christ
-		
-		prerequisite = { focus = GGRE_balkan_reintegration }
-		prerequisite = { focus = GGRE_claim_asia }
-		y = 6
-		x = 2
-		cost = 10
-		completion_reward = {
-			
-		}
-	}
+	
 	
 	focus = {
 		id = GGRE_revenge_crusade
 		text = "Revenge the 4th Crusade"
 		icon = GFX_focus_usa_attack_italy
 		
-		prerequisite = { focus = GGRE_crusade }
+		prerequisite = { focus = GGRE_balkan_reintegration }
+		prerequisite = { focus = GGRE_claim_asia }
 		y = 7
-		x = 2
+		x = 9
 		cost = 10
 		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = GGRE_final_crusade
+		text = "Call the 10th Crusade"
+		icon = GFX_focus_mex_restore_the_army_of_christ
+		
+		prerequisite = { focus = GGRE_revenge_crusade }
+		y = 6
+		x = 9
+		cost = 10
+		completion_reward = {
+			#Idea! Create national spirit that adds recruitable manpower and combat bonuses at each level! (why did I put his at the end.)
 		}
 	}
 	
@@ -356,7 +351,7 @@ focus_tree = {
 		mutually_exclusive = { focus = GGRE_renew_the_monarchy focus = GGRE_hung_parliament focus = GGRE_restore_the_constitution}
         prerequisite = { focus = GGRE_sack_the_prime_minister }
         y=1
-        x=5
+        x=12
         cost = 10
         completion_reward = {
             set_politics = { ruling_party = fascism elections_allowed = no }
@@ -376,7 +371,7 @@ focus_tree = {
 		mutually_exclusive = { focus = GGRE_third_hellenic focus = GGRE_hung_parliament focus = GGRE_restore_the_constitution}
 		prerequisite = { focus = GGRE_sack_the_prime_minister }
 		y = 1
-        x = 7
+        x = 14
 		cost = 10
 		completion_reward = {
 			add_popularity = { ideology = democratic popularity = .15 }
@@ -397,7 +392,7 @@ focus_tree = {
 			democratic > 0.5
 		}
 		y = 2
-		x = 7
+		x = 14
 		cost = 10
 		completion_reward = {
 			set_politics = { ruling_party = democratic elections_allowed = yes }
@@ -412,7 +407,7 @@ focus_tree = {
 		mutually_exclusive = { focus = GGRE_third_hellenic focus = GGRE_renew_the_monarchy focus = GGRE_restore_the_constitution}
 		prerequisite = { focus = GGRE_sack_the_prime_minister }
 		y = 1
-		x = 9
+		x = 16
 		cost = 1.0
 		completion_reward = {
 			add_popularity = {ideology = communism popularity = .15 }
@@ -430,7 +425,7 @@ focus_tree = {
         
         prerequisite = { focus = GGRE_hung_parliament }
         y = 2
-        x = 9
+        x = 16
         cost = 1.0
         completion_reward = {
             country_event = { id = peoples_greece.1 }
@@ -441,7 +436,7 @@ focus_tree = {
 		id = GGRE_army_effort
         text = "Rebuild the Army"
 		icon = GFX_goal_generic_allies_build_infantry
-		x = 20
+		x = 2
 		y = 0
 		cost = 10
 		search_filters = {  FOCUS_FILTER_RESEARCH }

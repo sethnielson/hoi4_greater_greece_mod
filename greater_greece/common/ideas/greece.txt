@@ -66,14 +66,14 @@ ideas = {
             }
         }
         
-        GGRE_latin_influences_idea = {
+        GGRE_byzantine_influences_idea = {
             allowed = {
                 always = no
             }
             
             removal_cost = -1
             
-            picutre = orthodox_church_support
+            picture = orthodox_church_support
             
             modifer = {
                 stability_factor = 0.15
