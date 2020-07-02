@@ -97,6 +97,7 @@ focus_tree = {
 		cost = 10
 		completion_reward = {
 			ENG = { give_guarantee = GRE }
+			add_war_support = 0.1
 		}
 	}
 	
@@ -114,6 +115,7 @@ focus_tree = {
 		cost = 10
 		completion_reward = {
 			GER = { give_guarantee = GRE }
+			add_war_support = 0.1
 		}
 	}
 	
@@ -175,6 +177,29 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 	}
 	
@@ -188,7 +213,76 @@ focus_tree = {
 		cost = 10
 		completion_reward = {
 			add_idea = {
-				id = GGRE_byzantine_influences_idea
+				id = GGRE_roman_research_idea
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT	
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
 			}
 		}
 	}
@@ -215,6 +309,7 @@ focus_tree = {
 		x = 8
 		cost = 10
 		completion_reward = {
+			add_war_support = 0.1
 			add_state_core = 341
 			add_state_claim = 344
 			add_state_claim = 343
@@ -249,7 +344,6 @@ focus_tree = {
 	
 	focus = {
 		id = GGRE_balkan_reintegration
-		text = "Reintegrate the Balkans"
 		icon = GFX_goal_generic_political_pressure
 		
 		prerequisite = { focus = GGRE_byzantine_influences }
@@ -257,6 +351,7 @@ focus_tree = {
 		x = 10
 		cost = 10
 		completion_reward = {
+			add_stability = 0.1
 			add_state_claim = 44
 			if = {
 				limit = {
@@ -316,36 +411,84 @@ focus_tree = {
 	
 	focus = {
 		id = GGRE_revenge_crusade
-		text = "Revenge the 4th Crusade"
 		icon = GFX_focus_usa_attack_italy
 		
 		prerequisite = { focus = GGRE_balkan_reintegration }
 		prerequisite = { focus = GGRE_claim_asia }
-		y = 7
+		y = 6
 		x = 9
 		cost = 10
 		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.1
+			add_state_claim = 158
+			add_state_claim = 159
+			add_state_claim = 39
+			add_state_claim = 160
+			add_state_claim = 161
+			add_state_claim = 162
+			add_state_claim = 157
+			add_state_claim = 2
+			add_state_claim = 117
+			add_state_claim = 156
+			add_state_claim = 115
+			add_state_claim = 736
+			add_state_claim = 163
+			if = {
+				limit = {
+					ITA = {
+						exists = yes
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = ITA
+				}
+			}
 		}
 	}
 	
 	focus = {
 		id = GGRE_final_crusade
-		text = "Call the 10th Crusade"
 		icon = GFX_focus_mex_restore_the_army_of_christ
 		
 		prerequisite = { focus = GGRE_revenge_crusade }
-		y = 6
+		y = 7
 		x = 9
 		cost = 10
 		completion_reward = {
-			#Idea! Create national spirit that adds recruitable manpower and combat bonuses at each level! (why did I put his at the end.)
+			#at some point add event for Britain/France to peacefully acquiesce if in faction
+			add_stability = 0.1
+			add_war_support = 0.1
+			add_state_claim = 677
+			add_state_claim = 680
+			add_state_claim = 553
+			add_state_claim = 554
+			add_state_claim = 164
+			add_state_claim = 453
+			add_state_claim = 454
+			add_state_claim = 455
+			add_state_claim = 183
+			add_state_claim = 458
+			add_state_claim = 665
+			add_state_claim = 449
+			add_state_claim = 662
+			add_state_claim = 448
+			add_state_claim = 661
+			add_state_claim = 450
+			add_state_claim = 451
+			add_state_claim = 663
+			add_state_claim = 452
+			add_state_claim = 447
+			add_state_claim = 446
+			add_state_claim = 456
+			add_state_claim = 457
 		}
 	}
 	
     #beginning of the fascist route
     focus = {
         id = GGRE_third_hellenic
-        text = "Third Hellenic Civilization"
 		icon = GFX_goal_support_fascism
         
 		mutually_exclusive = { focus = GGRE_renew_the_monarchy focus = GGRE_hung_parliament focus = GGRE_restore_the_constitution}

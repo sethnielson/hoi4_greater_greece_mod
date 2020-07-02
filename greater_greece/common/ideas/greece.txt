@@ -59,24 +59,24 @@ ideas = {
             
             removal_cost = -1
             
-            picture = generic_morale_bonus
+            picture = generic_manpower_bonus
             
             modifier = {
-                war_support_factor = 0.15
-            }
+				conscription = 0.02
+			}
         }
         
-        GGRE_byzantine_influences_idea = {
+        GGRE_roman_research_idea = {
             allowed = {
                 always = no
             }
             
             removal_cost = -1
             
-            picture = orthodox_church_support
+            picture = generic_research_bonus
             
             modifer = {
-                stability_factor = 0.15
+                research_speed_factor = 0.09
             }
         }
         
