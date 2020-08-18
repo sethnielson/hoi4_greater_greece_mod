@@ -38,7 +38,7 @@ ideas = {
     
     country = {
     
-        GRE_renew_the_monarchy = {
+        GGRE_renew_the_monarchy = {
             allowed = {
                 always = no
             }
@@ -75,12 +75,12 @@ ideas = {
             
             picture = generic_research_bonus
             
-            modifer = {
+            modifier = {
                 research_speed_factor = 0.09
             }
         }
         
-        GRE_third_hellenic = {
+        GGRE_third_hellenic = {
             allowed = {
                 always = no
             }
@@ -94,7 +94,50 @@ ideas = {
             }
         }
         
-        GRE_restored_constitution = {
+		GGRE_our_loyal_corner = {
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			
+			picture = idea_hol_caved_to_the_germans
+			
+			modifier = {
+				conscription = 0.01
+				stability_factor = 0.1
+				war_support_factor = 0.1
+			}
+		}
+		
+		GGRE_integrate_greeks = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			
+			picture = generic_manpower_bonus
+			
+			modifier = {
+				conscription = 0.01
+			}
+		}
+		
+		GGRE_makedonian_heritage = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			
+			picture = victors_of_the_great_war
+			
+			modifier = {
+				army_defence_factor = 0.05
+				army_attack_factor = 0.05
+			}
+		}
+		
+        GGRE_restored_constitution = {
             allowed = {
                 always = no
             }
@@ -108,7 +151,44 @@ ideas = {
             }
         }
         
-        GRE_honored_parliament = {
+		GGRE_patriot_cause = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = idea_chi_war_of_resistance3
+			
+			modifer = {
+				conscription = 0.015
+			}
+		}
+		
+		GGRE_for_the_future = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = fortification_focus
+			
+			modifier = {
+				conscription = 0.015
+			}
+		}
+		
+		GGRE_all_greek = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_constitutional_guarantee
+			
+			modifier = {
+				stability_factor = 0.15
+				non_core_manpower = .02
+			}
+		}
+		
+        GGRE_honored_parliament = {
             allowed = {
                 always = no
             }

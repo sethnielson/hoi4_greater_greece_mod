@@ -1,0 +1,10 @@
+GGRE_category_territorial_integration = {
+
+	icon = border_war
+
+	priority = 90
+
+	allowed = {
+		original_tag = GRE
+	}
+}

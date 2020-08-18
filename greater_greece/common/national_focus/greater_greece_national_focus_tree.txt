@@ -80,7 +80,7 @@ focus_tree = {
         cost = 10
         completion_reward = {
             add_timed_idea = {
-                idea = GRE_renew_the_monarchy
+                idea = GGRE_renew_the_monarchy
                 days = 720
             }
         }
@@ -103,7 +103,7 @@ focus_tree = {
 	
 	focus = {
 		id = GGRE_plea_brothers
-		icon = GFX_focus_chi_mission_to_germany
+		icon = GFX_focus_ger_oppose_hitler
 		available = {
 			GER = { has_government = neutrality }
 		}
@@ -147,10 +147,10 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -170,10 +170,10 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -193,10 +193,10 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -231,10 +231,10 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -254,10 +254,10 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -277,10 +277,10 @@ focus_tree = {
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -331,7 +331,7 @@ focus_tree = {
 			if = {
 				limit = {
 					TUR = {
-						exists = no
+						exists = yes
 					}
                 }
                 create_wargoal = {
@@ -500,15 +500,321 @@ focus_tree = {
             set_politics = { ruling_party = fascism elections_allowed = no }
             add_popularity = { ideology = fascism popularity = 0.15 }
             add_timed_idea = {
-                idea = GRE_third_hellenic
+                idea = GGRE_third_hellenic
                 days = 720
             }
         }
     }
+	
+	focus = {
+		id = GGRE_allegiance_to_the_fuhrer
+		icon = GFX_focus_chi_mission_to_germany
+	
+		prerequisite = { focus = GGRE_third_hellenic }
+		y = 2
+		x = 12
+		cost = 10
+	
+		available = {
+			GER = { 
+				is_faction_leader = yes
+				has_government = fascism
+			}
+			is_in_faction = no
+			NOT = { has_war_with = GER }
+			is_subject = no
+			NOT = {
+				any_other_country = {
+					is_in_faction_with = GER
+					has_war_with = ROM
+				}
+			}
+		}
+
+		bypass = {
+			is_in_faction_with = GER
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+
+		completion_reward = {
+			GER = {
+				country_event = generic.2
+				add_war_support = 0.1
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_our_loyal_corner
+		icon = GFX_focus_ger_reichskommisariats
+	
+		prerequisite = { focus = GGRE_allegiance_to_the_fuhrer }
+	
+		y = 3
+		x = 12
+		cost = 10
+	
+		completion_reward = {
+			add_idea = {
+				id = GGRE_our_loyal_corner
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_adopt_german_engineering
+		icon = GFX_goal_generic_trade
+		
+		prerequisite = { focus = GGRE_our_loyal_corner }
+		
+		y = 4
+		x = 12
+		cost = 10
+		
+		completion_reward = {
+			add_idea = {
+				id = GGRE_roman_research_idea
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT				
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_integrate_greeks
+		icon = GFX_goal_generic_territory_or_war
+		
+		prerequisite = { focus = GGRE_adopt_german_engineering }
+		y = 5
+		x = 12
+		cost = 10
+		
+		completion_reward = {
+			add_idea = {
+				id = GGRE_integrate_greeks
+			}
+			#Turkish states
+			add_state_core = 341
+			add_state_core = 342
+			add_state_core = 340
+			add_state_core = 339
+			#Italian dodecanese claim, already have core
+			add_state_claim = 164
+			#Cyprus
+			add_state_core = 183
+			#Cyprus, but a claim
+			add_state_claim = 183
+			#Turksih Claims
+			add_state_claim = 340
+			add_state_claim = 342
+			add_state_claim = 339
+			#Turkish claims, but for later
+						add_state_claim = 344
+			add_state_claim = 343
+			add_state_claim = 49
+			add_state_claim = 353
+			add_state_claim = 347
+			add_state_claim = 356
+			add_state_claim = 348
+			add_state_claim = 346
+			add_state_claim = 350
+			add_state_claim = 345
+			add_state_claim = 355
+			add_state_claim = 349
+			add_state_claim = 354
+			add_state_claim = 352
+			#Turkish war goal
+			if = {
+				limit = {
+					TUR = {
+						exists = yes
+					}
+					NOT = {
+						is_in_faction_with = TUR
+					}
+                }
+                create_wargoal = {
+                    type = annex_everything
+                    target = TUR
+                }
+			}
+			#Yugoslavian (Makedonian) state claims
+			add_state_claim = 106
+			#Albanian state claim
+			add_state_claim = 44
+			#Bulgarian state claims
+			add_state_claim = 48
+			add_state_claim = 212
+		}
+	}
+	
+	focus = {
+		id = GGRE_embrace_makedonian_heritage
+		icon = GFX_goal_generic_miliatry_sphere
+		
+		prerequisite = { focus = GGRE_integrate_greeks }
+		y = 6
+		x = 12
+		cost = 10
+		
+		completion_reward = {
+			add_idea = {
+				id = GGRE_makedonian_heritage
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_further_eastern_front
+		#AKA 'Murica. LOLZ
+		icon = GFX_goal_generic_position_armies
+		
+		prerequisite = { focus = GGRE_integrate_greeks }
+		y = 7
+		x = 12
+		cost = 10
+		
+		completion_reward = {
+			#Syria to Egypt claims
+			add_state_claim = 677
+			add_state_claim = 680
+			add_state_claim = 553
+			add_state_claim = 554
+			add_state_claim = 455
+			add_state_claim = 454
+			add_state_claim = 453
+			add_state_claim = 447
+			add_state_claim = 446
+			add_state_claim = 457
+			add_state_claim = 456
+			add_state_claim = 452
+			#claims on Pakistan
+			add_state_claim = 444
+			add_state_claim = 445
+			add_state_claim = 442
+			add_state_claim = 787
+			add_state_claim = 441
+			add_state_claim = 440
+			add_state_claim = 443
+			#wargoal on Iran
+			if = {
+				limit = {
+					PER = {
+						exists = yes
+					}
+					NOT = {
+						is_in_faction_with = PER
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = PER
+				}
+			}
+			#wargoal on Iraq
+			if = {
+				limit = {
+					IRQ = {
+						exists = yes
+					}
+					not = {
+						is_in_faction_with = IRQ
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = IRQ
+				}
+			}
+			#Wargoal on Afghanistan
+			if = {
+				limit = {
+					AFG = {
+						exists = yes
+					}
+					not = {
+						is_in_faction_with = AFG
+					}
+				}
+				create_wargoal = {
+					type = annex_everything
+					target = AFG
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_alexandrian_syncretism
+		icon = GFX_goal_generic_national_unity
+		
+		prerequisite = { focus = GGRE_further_eastern_front }
+		y = 8
+		x = 12
+		cost = 10
+		
+		completion_reward = {
+			add_stability = 0.1
+		}
+	}
+	
 	#beginning of the democratic route
 	focus = {
 		id = GGRE_restore_the_constitution
-		text = "Restore the 1927 Constitution"
 		icon = GFX_focus_generic_treaty
 		
 		mutually_exclusive = { focus = GGRE_third_hellenic focus = GGRE_hung_parliament focus = GGRE_restore_the_constitution}
@@ -519,7 +825,7 @@ focus_tree = {
 		completion_reward = {
 			add_popularity = { ideology = democratic popularity = .15 }
 			add_timed_idea = {
-				idea = GRE_restored_constitution
+				idea = GGRE_restored_constitution
 				days = 720
 			}
 		}
@@ -527,7 +833,6 @@ focus_tree = {
 	
 	focus = {
 		id = GGRE_establish_republic
-		text = "Establish the Third Republic"
 		icon = GFX_goal_support_democracy
 		
 		prerequisite = { focus = GGRE_restore_the_constitution }
@@ -539,8 +844,346 @@ focus_tree = {
 		cost = 10
 		completion_reward = {
 			set_politics = { ruling_party = democratic elections_allowed = yes }
+			add_stability = .15
 		}
 	}
+	
+	focus = {
+		id = GGRE_last_bastion
+		icon = GFX_goal_generic_construct_military
+		
+		prerequisite = { focus = GGRE_establish_republic }
+		y = 3
+		x = 14
+		cost = 10
+		
+		completion_reward = {
+			add_war_support = .1
+			if = {
+				limit = {
+					controls_state = 185
+				}
+				185 = {
+					set_building_level = {
+						type = bunker
+						level = 5
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+							level < 5
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 184
+				}
+				184 = {
+					set_building_level = {
+						type = bunker
+						level = 5
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+							level < 5
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 731
+				}
+				731 = {
+					set_building_level = {
+						type = bunker
+						level = 5
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+							level < 5
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_patriot_cause
+		icon = GFX_goal_generic_demand_territory
+		
+		prerequisite = { focus = GGRE_last_bastion }
+		y = 4
+		x = 14
+		cost = 10
+		
+		completion_reward = {
+			add_idea = {
+				id = GGRE_patriot_cause
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_for_the_future
+		icon = GFX_goal_generic_fortify_city
+		
+		prerequisite = { focus = GGRE_patriot_cause }
+		y = 5
+		x = 14
+		cost = 10
+		
+		completion_reward = {
+			add_idea = {
+				id = GGRE_for_the_future
+			}
+			if = {
+				limit = {
+					controls_state = 47
+				}
+				47 = {
+					add_building_construction = { type = bunker province = 4109 level = 2 instant_build = yes }
+					#also add sea forts
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 186
+				}
+				186 = {
+					add_building_construction = { type = bunker province = 7211 level = 2 instant_build = yes }
+					add_building_construction = { type = bunker province = 11965 level = 2 instant_build = yes }
+					add_building_construction = { type = coastal_bunker province = 7211 level = 3 instant_build = yes }
+					add_building_construction = { type = coastal_bunker province = 11965 level = 3 instant_build = yes }
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 185
+				}
+				185 = {
+					add_building_construction = { type = bunker province = 9805 level = 2 instant_build = yes }
+					add_building_construction = { type = coastal_bunker province = 9805 level = 3 instant_build = yes }
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 731
+				}
+				731 = {
+					add_building_construction = { type = bunker province = 11818 level = 2 instant_build = yes }
+					add_building_construction = { type = coastal_bunker province = 11818 level = 3 instant_build = yes }
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_protect_people
+		icon = GFX_goal_generic_improve_relations
+		
+		prerequisite = { focus = GGRE_for_the_future }
+		y = 6
+		x = 14
+		cost = 10
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					country_exists = TUR
+					NOT = {
+						has_war_with = TUR
+					}
+				}
+				TUR = {
+					add_opinion_modifier = { target = GRE modifier = ita_diplomacy_focus }
+					add_timed_idea = { idea = democratic_influence days = 1095 }
+					country_event = { id = generic.1 }
+				}
+				if = {
+					limit = { TUR = { is_in_faction = no } }
+					GRE = { give_guarantee = TUR }
+				}
+			}
+			if = {
+				limit = {
+					country_exists = ALB
+					NOT = {
+						has_war_with = ALB
+					}
+				}
+				ALB = {
+					add_opinion_modifier = { target = GRE modifier = ita_diplomacy_focus }
+					add_timed_idea = { idea = democratic_influence days = 1095 }
+					country_event = { id = generic.1 }
+				}
+				if = {
+					limit = { ALB = { is_in_faction = no } }
+					GRE = { give_guarantee = ALB }
+				}
+			}
+			if = {
+				limit = {
+					country_exists = BUL
+					NOT = {
+						has_war_with = BUL
+					}
+				}
+				BUL = {
+					add_opinion_modifier = { target = GRE modifier = ita_diplomacy_focus }
+					add_timed_idea = { idea = democratic_influence days = 1095 }
+					country_event = { id = generic.1 }
+				}
+				if = {
+					limit = { BUL = { is_in_faction = no } }
+					GRE = { give_guarantee = BUL }
+				}
+			}
+			if = {
+				limit = {
+					country_exists = YUG
+					NOT = {
+						has_war_with = YUG
+					}
+				}
+				YUG = {
+					add_opinion_modifier = { target = GRE modifier = ita_diplomacy_focus }
+					add_timed_idea = { idea = democratic_influence days = 1095 }
+					country_event = { id = generic.1 }
+				}
+				if = {
+					limit = { YUG = { is_in_faction = no } }
+					GRE = { give_guarantee = YUG }
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_delian_league
+		icon = GFX_goal_generic_major_alliance
+		
+		prerequisite = { focus = GGRE_protect_people }
+		y = 7
+		x = 14
+		cost = 10
+		
+		completion_reward = {
+			set_rule = { can_create_factions = yes }
+			create_faction = "delian_league"
+			if = {
+				limit = {
+					TUR = { 
+						is_in_faction = no
+						is_ai = yes
+						not = {
+							has_government = fascism
+						}
+						not = {
+							has_government = communism
+						}
+					}
+				}
+				add_to_faction = TUR
+			}
+			if = {
+				BUL = { 
+						is_in_faction = no
+						is_ai = yes
+						not = {
+							has_government = fascism
+						}
+						not = {
+							has_government = communism
+						}
+					}
+				}
+				add_to_faction = BUL
+			}
+			if = {
+				ALB = { 
+						is_in_faction = no
+						is_ai = yes
+						not = {
+							has_government = fascism
+						}
+						not = {
+							has_government = communism
+						}
+					}
+				}
+				add_to_faction = ALB
+			}
+			if = {
+				limit = {
+					YUG = { 
+						is_in_faction = no
+						is_ai = yes
+						not = {
+							has_government = fascism
+						}
+						not = {
+							has_government = communism
+						}
+					}
+				}
+				add_to_faction = YUG
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_all_greek
+		icon = GFX_focus_generic_concessions
+		
+		prerequisite = { focus = GGRE_delian_league }
+		y = 8
+		x = 14
+		cost = 10
+		
+		completion_reward = {
+			add_idea = {
+				id = GGRE_all_greek
+			}
+		}
+	}
+	
 	#beginning of the communist route
 	focus = {
 		id = GGRE_hung_parliament
@@ -555,7 +1198,7 @@ focus_tree = {
 		completion_reward = {
 			add_popularity = {ideology = communism popularity = .15 }
 			add_timed_idea = {
-				idea = GRE_honored_parliament
+				idea = GGRE_honored_parliament
 				days = 720
 			}
 		}
