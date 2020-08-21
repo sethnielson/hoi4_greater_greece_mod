@@ -8,3 +8,13 @@ GGRE_category_territorial_integration = {
 		original_tag = GRE
 	}
 }
+
+GGRE_category_delian_league = {
+	icon = generic_political_actions
+	
+	priority = 90
+	
+	allowed = {
+		original_tag = GRE
+	}
+}

@@ -141,8 +141,8 @@ set_convoys = 10
 
 set_politics = {
 	ruling_party = neutrality
-	last_election = "1935.6.9"
-	election_frequency = 12
+	last_election = "1935.1.26"
+	election_frequency = 24
 	elections_allowed = yes # none after offset 1
 }
 set_popularities = {
@@ -155,13 +155,13 @@ set_popularities = {
 set_stability = 0.75
 
 create_country_leader = {
-	name = "Ioannis Metaxas"
-	desc = "POLITICS_IOANNIS_METAXAS_DESC"
-	picture = "Portrait_Greece_Ioannis_Metaxas.dds"
+	name = "Hung Parliament"
+	desc = "POLITICS_FALLEN_GOVERNMENT_DESC"
+	picture = "gfx//leaders//ENG//portrait_eng_fallen_government.dds"
 	expire = "1965.1.1"
-	ideology = despotism
+	ideology = centrism
 	traits = {
-		#
+		cabinet_crisis
 	}
 }
 
@@ -172,7 +172,7 @@ create_country_leader = {
 	expire = "1965.1.1"
 	ideology = marxism
 	traits = {
-		#
+		militant_socialist
 	}
 }
 
@@ -183,7 +183,7 @@ create_country_leader = {
 	expire = "1965.1.1"
 	ideology = conservatism
 	traits = {
-		#
+		stout_defender
 	}
 }
 
@@ -194,7 +194,7 @@ create_country_leader = {
 	expire = "1965.1.1"
 	ideology = nazism
 	traits = {
-		#
+		eager_collaborator
 	}
 }
 

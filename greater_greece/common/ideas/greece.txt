@@ -90,7 +90,7 @@ ideas = {
             picture = generic_fascism_drift_bonus
 
             modifier = {
-                fascism_drift = 0.2
+                fascism_drift = 0.1
             }
         }
         
@@ -147,7 +147,7 @@ ideas = {
             picture = generic_democratic_drift_bonus
             
             modifier = {
-                democratic_drift = 0.2
+                democratic_drift = 0.1
             }
         }
         
@@ -158,8 +158,8 @@ ideas = {
 			removal_cost = -1
 			picture = idea_chi_war_of_resistance3
 			
-			modifer = {
-				conscription = 0.015
+			modifier = {
+				army_core_defence_factor = 0.1
 			}
 		}
 		
@@ -183,8 +183,8 @@ ideas = {
 			picture = generic_constitutional_guarantee
 			
 			modifier = {
-				stability_factor = 0.15
-				non_core_manpower = .02
+				conscription = 0.015
+				non_core_manpower = 0.02
 			}
 		}
 		
@@ -201,6 +201,52 @@ ideas = {
                 communism_drift = 0.2
             }
         }
+		
+		GGRE_peoples_revolt = {
+			allowed = { always = no }
+			
+			removal_cost = -1
+			picture = idea_generic_communist_army
+			
+			modifier = {
+				conscription = 0.02
+			}
+		}
+		
+		GGRE_first_pillar = {
+			allowed = { always = no }
+			
+			removal_cost = -1
+			picture = idea_mex_revolutionary_army
+			
+			modifier = {
+				war_support_factor = 0.2
+				conscription = 0.02
+			}
+		}
+		
+		GGRE_original_voice = {
+			allowed = { always = no }
+			
+			removal_cost = -1
+			picture = fourth_international
+			
+			modifier = {
+				political_power_gain = 0.75
+				resistance_damage_to_garrison = -0.1 
+			}
+		}
+		
+		GGRE_resource_expeditions = {
+			allowed = { always = no }
+			
+			removal_cost = -1
+			picture = generic_exploit_mines
+			
+			modifier = {
+				local_resources_factor = 0.10
+			}
+		}
     }
 
     theorist = {

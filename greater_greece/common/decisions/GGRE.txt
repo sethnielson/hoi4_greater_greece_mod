@@ -242,7 +242,7 @@ GGRE_category_territorial_integration = {
 				remove_state_claim = 350
 				remove_state_claim = 352
 			}
-			if = 
+			if = {
 				limit = {
 					TUR = {
 						is_subject_of = GRE
@@ -458,7 +458,7 @@ GGRE_category_territorial_integration = {
 				remove_state_claim = 414
 				remove_state_claim = 410
 			}
-			if = 
+			if = {
 				limit = {
 					PER = {
 						is_subject_of = GRE
@@ -640,7 +640,7 @@ GGRE_category_territorial_integration = {
 				remove_state_claim = 445
 				remove_state_claim = 787
 			}
-			if = 
+			if = {
 				limit = {
 					PAK = {
 						is_subject_of = GRE
@@ -664,3 +664,72 @@ GGRE_category_territorial_integration = {
 			factor = 1
 		}
 	}
+}
+
+GGRE_category_delian_league = {
+
+	GGRE_decision_invite_to_delian_league = {
+	
+		icon = generic_political_discourse
+		
+		fire_only_once = no
+		
+		days_remove = 150
+
+		allowed = {
+			original_tag = GRE
+		}
+		
+		visible = {
+			is_faction_leader = yes
+		}
+		
+		target_root_trigger = {
+			OR = {
+				has_completed_focus = GRE_protect_people
+			}
+		}
+
+		target_trigger = {
+			FROM = {
+				NOT = { is_in_faction_with = ROOT }
+				any_country = {
+					has_country_flag = GGRE_protected_by
+				}
+			}
+        }
+
+		available = {
+			OR = {
+				has_opinion = {
+					target = FROM
+					value > 49
+				}
+				FROM = {
+					has_opinion = {
+						target = ROOT
+						value > 49
+					}
+				}
+			}
+			FROM = {
+				is_in_faction = no
+				is_subject = no
+			}
+		}
+
+		cost = 25
+		
+		complete_effect = {
+			FROM = {
+				country_event = {
+					id = generic.5
+				}				
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+}

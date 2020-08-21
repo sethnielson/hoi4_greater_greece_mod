@@ -1,16 +1,16 @@
-﻿search_filter_prios = {
-	FOCUS_FILTER_POLITICAL = 1010
+﻿#search_filter_prios = {
+#	FOCUS_FILTER_POLITICAL = 1010
 
 	
  
 	
 	
-	FOCUS_FILTER_RESEARCH = 522
+#	FOCUS_FILTER_RESEARCH = 522
 
 	
-	FOCUS_FILTER_INDUSTRY = 509
+#	FOCUS_FILTER_INDUSTRY = 509
 
-}
+#}
 
 focus_tree = {
 	id = greater_greece_focus
@@ -25,8 +25,10 @@ focus_tree = {
 		}
 	}
 	
-	default = yes
+	default = no
 	reset_on_civilwar = no
+	
+	continuous_focus_position = { x = 50 y = 1001 }
 
 	initial_show_position = {
 		focus = GGRE_sack_the_prime_minister #I don't know if i was supposed to change this. :|
@@ -38,28 +40,26 @@ focus_tree = {
         icon = GFX_focus_eng_motion_of_no_confidence
         x = 13
         y = 0
-        cost = 1.0
+        cost = 10
         available_if_capitulated = no
-        #available = {
-        #    date > 1936.1.26
-        #}
-        
-        #bypass = {
-		#	has_country_flag = GRE_mackensen_dead
-		#	NOT = { has_government = democratic }
-		#}
-        
-        hidden_effect = {
-            kill_country_leader = yes
+        available = {
+            has_country_flag = GGRE_metaxas_dictator
         }
         
+        bypass = {
+			has_country_flag = GGRE_metaxas_dead
+		#	NOT = { has_government = democratic }
+		}
+        
         completion_reward = {
-            add_stability=0.1
             add_political_power=100
+			hidden_effect = {
+				kill_country_leader = yes
+			}
             create_country_leader = {
                 name = "King George II"
-                desc = "POLITICS_AUGUST_VON_MACKENSEN_DESC"
-                picture = GFX_portrait_ger_august_von_mackensen
+                #desc = "POLITICS_AUGUST_VON_MACKENSEN_DESC"
+                picture = "gfx//leaders//ENG//Portrait_Britain_Edward_VIII.dds"
                 expire = "1965.1.1"
                 ideology = despotism
                 traits = {
@@ -128,9 +128,7 @@ focus_tree = {
 		x = 9
 		cost = 10
 		completion_reward = {
-			add_idea = {
-				idea = GGRE_imperial_legacy_idea
-			}
+			add_ideas = GGRE_imperial_legacy_idea
 			random_owned_controlled_state = {
 				limit = {
 					is_fully_controlled_by = GRE #was PREV
@@ -212,9 +210,7 @@ focus_tree = {
 		x = 9
 		cost = 10
 		completion_reward = {
-			add_idea = {
-				id = GGRE_roman_research_idea
-			}
+			add_ideas = GGRE_roman_research_idea
 			random_owned_controlled_state = {
 				limit = {
 					is_fully_controlled_by = GRE #was PREV
@@ -411,7 +407,7 @@ focus_tree = {
 	
 	focus = {
 		id = GGRE_revenge_crusade
-		icon = GFX_focus_usa_attack_italy
+		icon = GFX_focus_attack_italy
 		
 		prerequisite = { focus = GGRE_balkan_reintegration }
 		prerequisite = { focus = GGRE_claim_asia }
@@ -559,9 +555,7 @@ focus_tree = {
 		cost = 10
 	
 		completion_reward = {
-			add_idea = {
-				id = GGRE_our_loyal_corner
-			}
+			add_ideas = GGRE_our_loyal_corner
 		}
 	}
 	
@@ -576,9 +570,6 @@ focus_tree = {
 		cost = 10
 		
 		completion_reward = {
-			add_idea = {
-				id = GGRE_roman_research_idea
-			}
 			random_owned_controlled_state = {
 				limit = {
 					is_fully_controlled_by = GRE #was PREV
@@ -599,8 +590,7 @@ focus_tree = {
 			random_owned_controlled_state = {
 				limit = {
 					is_fully_controlled_by = GRE #was PREV
-					is_core_of = GRE # was ROOT
-					}					
+					is_core_of = GRE # was ROOT				
 					free_building_slots = {
 						building = arms_factory
 						size > 1
@@ -644,9 +634,7 @@ focus_tree = {
 		cost = 10
 		
 		completion_reward = {
-			add_idea = {
-				id = GGRE_integrate_greeks
-			}
+			add_ideas = GGRE_integrate_greeks
 			#Turkish states
 			add_state_core = 341
 			add_state_core = 342
@@ -704,7 +692,7 @@ focus_tree = {
 	
 	focus = {
 		id = GGRE_embrace_makedonian_heritage
-		icon = GFX_goal_generic_miliatry_sphere
+		icon = GFX_goal_generic_military_sphere
 		
 		prerequisite = { focus = GGRE_integrate_greeks }
 		y = 6
@@ -712,9 +700,7 @@ focus_tree = {
 		cost = 10
 		
 		completion_reward = {
-			add_idea = {
-				id = GGRE_makedonian_heritage
-			}
+			add_ideas = GGRE_makedonian_heritage
 		}
 	}
 	
@@ -723,7 +709,7 @@ focus_tree = {
 		#AKA 'Murica. LOLZ
 		icon = GFX_goal_generic_position_armies
 		
-		prerequisite = { focus = GGRE_integrate_greeks }
+		prerequisite = { focus = GGRE_embrace_makedonian_heritage }
 		y = 7
 		x = 12
 		cost = 10
@@ -920,9 +906,7 @@ focus_tree = {
 		cost = 10
 		
 		completion_reward = {
-			add_idea = {
-				id = GGRE_patriot_cause
-			}
+			add_ideas = GGRE_patriot_cause
 			random_owned_controlled_state = {
 				limit = {
 					is_fully_controlled_by = GRE #was PREV
@@ -953,9 +937,7 @@ focus_tree = {
 		cost = 10
 		
 		completion_reward = {
-			add_idea = {
-				id = GGRE_for_the_future
-			}
+			add_ideas = GGRE_for_the_future
 			if = {
 				limit = {
 					controls_state = 47
@@ -1034,6 +1016,7 @@ focus_tree = {
 				TUR = {
 					add_opinion_modifier = { target = GRE modifier = ita_diplomacy_focus }
 					add_timed_idea = { idea = democratic_influence days = 1095 }
+					set_country_flag = GGRE_protected_by
 					country_event = { id = generic.1 }
 				}
 				if = {
@@ -1051,6 +1034,7 @@ focus_tree = {
 				ALB = {
 					add_opinion_modifier = { target = GRE modifier = ita_diplomacy_focus }
 					add_timed_idea = { idea = democratic_influence days = 1095 }
+					set_country_flag = GGRE_protected_by
 					country_event = { id = generic.1 }
 				}
 				if = {
@@ -1068,6 +1052,7 @@ focus_tree = {
 				BUL = {
 					add_opinion_modifier = { target = GRE modifier = ita_diplomacy_focus }
 					add_timed_idea = { idea = democratic_influence days = 1095 }
+					set_country_flag = GGRE_protected_by
 					country_event = { id = generic.1 }
 				}
 				if = {
@@ -1085,6 +1070,7 @@ focus_tree = {
 				YUG = {
 					add_opinion_modifier = { target = GRE modifier = ita_diplomacy_focus }
 					add_timed_idea = { idea = democratic_influence days = 1095 }
+					set_country_flag = GGRE_protected_by
 					country_event = { id = generic.1 }
 				}
 				if = {
@@ -1107,64 +1093,6 @@ focus_tree = {
 		completion_reward = {
 			set_rule = { can_create_factions = yes }
 			create_faction = "delian_league"
-			if = {
-				limit = {
-					TUR = { 
-						is_in_faction = no
-						is_ai = yes
-						not = {
-							has_government = fascism
-						}
-						not = {
-							has_government = communism
-						}
-					}
-				}
-				add_to_faction = TUR
-			}
-			if = {
-				BUL = { 
-						is_in_faction = no
-						is_ai = yes
-						not = {
-							has_government = fascism
-						}
-						not = {
-							has_government = communism
-						}
-					}
-				}
-				add_to_faction = BUL
-			}
-			if = {
-				ALB = { 
-						is_in_faction = no
-						is_ai = yes
-						not = {
-							has_government = fascism
-						}
-						not = {
-							has_government = communism
-						}
-					}
-				}
-				add_to_faction = ALB
-			}
-			if = {
-				limit = {
-					YUG = { 
-						is_in_faction = no
-						is_ai = yes
-						not = {
-							has_government = fascism
-						}
-						not = {
-							has_government = communism
-						}
-					}
-				}
-				add_to_faction = YUG
-			}
 		}
 	}
 	
@@ -1178,23 +1106,20 @@ focus_tree = {
 		cost = 10
 		
 		completion_reward = {
-			add_idea = {
-				id = GGRE_all_greek
-			}
+			add_ideas = GGRE_all_greek
 		}
 	}
 	
 	#beginning of the communist route
 	focus = {
 		id = GGRE_hung_parliament
-		text = "Honor the Hung Parliament"
 		icon = GFX_goal_support_communism
 		
 		mutually_exclusive = { focus = GGRE_third_hellenic focus = GGRE_renew_the_monarchy focus = GGRE_restore_the_constitution}
 		prerequisite = { focus = GGRE_sack_the_prime_minister }
 		y = 1
-		x = 16
-		cost = 1.0
+		x = 17
+		cost = 10
 		completion_reward = {
 			add_popularity = {ideology = communism popularity = .15 }
 			add_timed_idea = {
@@ -1206,25 +1131,988 @@ focus_tree = {
     
     focus = {
         id = GGRE_peoples_revolt
-        text = "Incite the People's Revolt"
-        icon = GFX_goal_generic_soviet_construction
+        icon = GFX_goal_tfv_burn_the_royal_portraits
         
         prerequisite = { focus = GGRE_hung_parliament }
         y = 2
-        x = 16
-        cost = 1.0
+        x = 17
+        cost = 10
         completion_reward = {
-            country_event = { id = peoples_greece.1 }
-        }
+            country_event = { id = GGRE_peoples_greece.1 }
+			add_ideas = GGRE_peoples_revolt
+		}
     }
+	
+	focus = {
+		id = GGRE_greater_revolution
+		icon = GFX_focus_generic_join_comintern
+		
+		prerequisite = { 
+			focus = GGRE_peoples_revolt
+			GRE = { has_civil_war = no }
+		}
+		y = 3
+		x = 17
+		cost = 10
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				SOV = {
+					has_capitulated = yes
+				}
+			}
+		}
+
+		available = {
+			SOV = { is_faction_leader = yes }
+			is_in_faction = no
+			NOT = { has_war_with = SOV }
+			is_subject = no
+			NOT = {
+				any_other_country = {
+					is_in_faction_with = SOV
+					has_war_with = GRE
+				}
+			}
+		}
+
+		bypass = {
+			is_in_faction_with = SOV
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+
+		completion_reward = {
+			SOV = { country_event = generic.2 }
+		}
+	}
+	
+	focus = {
+		id = GGRE_first_pillar
+		icon = GFX_focus_YUG_pan_slavic_congress
+		
+		prerequisite = { focus = GGRE_greater_revolution }
+		y = 4
+		x = 17
+		cost = 10
+		
+		completion_reward = {
+			add_ideas = GGRE_first_pillar
+		}
+	}
+	
+	focus = {
+		id = GGRE_second_pillar
+		icon = GFX_goal_generic_soviet_construction
+		
+		prerequisite = { focus = GGRE_first_pillar }
+		y = 5
+		x = 17
+		cost = 10
+		
+		completion_reward = {
+			add_stability = .2
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT	
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_aegean_red
+		icon = GFX_goal_generic_major_war
+		
+		prerequisite = { focus = GGRE_second_pillar }
+		y = 6
+		x = 16
+		cost = 10
+		
+		completion_reward = {
+			TUR = { set_country_flag = GGRE_red }
+			if = {
+				limit = {
+					TUR = {
+						exists = yes
+					}
+					NOT = {
+						is_in_faction_with = TUR
+					}
+                }
+                create_wargoal = {
+                    type = puppet_wargoal_focus
+                    target = TUR
+                }
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_black_red
+		icon = GFX_goal_generic_navy_cruiser
+		
+		prerequisite = { focus = GGRE_aegean_red }
+		y = 7
+		x = 16
+		cost = 10
+		
+		completion_reward = {
+			BUL = { set_country_flag = GGRE_red }
+			ROM = { set_country_flag = GGRE_red }
+			if = {
+				limit = {
+					BUL = {
+						exists = yes
+					}
+					NOT = {
+						is_in_faction_with = BUL
+					}
+                }
+                create_wargoal = {
+                    type = puppet_wargoal_focus
+                    target = BUL
+                }
+			}
+			if = {
+				limit = {
+					ROM = {
+						exists = yes
+					}
+					NOT = {
+						is_in_faction_with = ROM
+					}
+                }
+                create_wargoal = {
+                    type = puppet_wargoal_focus
+                    target = ROM
+                }
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_adriatic_red
+		icon = GFX_goal_generic_more_territory_claims
+		
+		prerequisite = { focus = GGRE_second_pillar }
+		y = 7
+		x = 18
+		cost = 10
+		
+		completion_reward = {
+			ALB = { set_country_flag = GGRE_red }
+			YUG = { set_country_flag = GGRE_red }
+			if = {
+				limit = {
+					ALB = {
+						exists = yes
+					}
+					NOT = {
+						is_in_faction_with = ALB
+					}
+                }
+                create_wargoal = {
+                    type = puppet_wargoal_focus
+                    target = ALB
+                }
+			}
+			if = {
+				limit = {
+					YUG = {
+						exists = yes
+					}
+					NOT = {
+						is_in_faction_with = YUG
+					}
+                }
+                create_wargoal = {
+                    type = puppet_wargoal_focus
+                    target = YUG
+                }
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_original_voice
+		icon = GFX_goal_support_fourth_int
+		
+		prerequisite = { focus = GGRE_black_red }
+		prerequisite = { focus = GGRE_adriatic_red }
+		y = 8
+		x = 17
+		cost = 10
+		
+		completion_reward = {
+			add_ideas = GGRE_original_voice
+		}
+	}
+	
+	focus = {
+		id = GGRE_third_pillar
+		icon = GFX_goal_generic_alliance
+		
+		prerequisite = { focus = GGRE_original_voice }
+		prerequisite = { SOV = { has_country_leader = { "Joseph Stalin" } } }
+		y = 9
+		x = 17
+		cost = 10
+		
+		completion_reward = {
+			set_rule = { can_create_factions = yes }
+			create_faction = "alpha_omega"
+		}
+	}
+	
+	#Beginning of the Industry Route
+	focus = {
+		id = GGRE_electronics_modernization
+		icon = GFX_goal_generic_radar
+		
+		y = 0
+		x = 3
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = GGRE_electronics
+				bonus = 1.0
+				uses = 1
+				category = electronics
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_tax_reform
+		icon = GFX_goal_generic_intelligence_exchange
+		
+		prerequisite = { focus = GGRE_electronics_modernization }
+		y = 1
+		x = 1
+		cost = 10
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT	
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_highway_investments
+		icon = GFX_goal_generic_construct_infrastructure
+		
+		prerequisite = { focus = GGRE_tax_reform }
+		y = 2
+		x = 1
+		cost = 10
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_modernized_workforce
+		icon = GFX_goal_generic_construction
+		
+		prerequisite = { focus = GGRE_highway_investments }
+		y = 3
+		x = 1
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = GGRE_industry1
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_abandoned_building
+		icon = GFX_goal_generic_construct_mil_factory
+		
+		prerequisite = {
+			focus = GGRE_modernized_workforce
+			focus = GGRE_land_registry
+		}
+		y = 4
+		x = 1
+		cost = 10
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT	
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_fully_controlled_by = GRE #was PREV
+					is_core_of = GRE # was ROOT
+					not = {
+						OR = {
+							state = 187
+							state = 182
+						}
+					}					
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_industry_competition
+		icon = GFX_goal_generic_build_tank
+		
+		prerequisite = { focus = GGRE_abandoned_building }
+		y = 5
+		x = 1
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = GGRE_industry2
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_military_academies
+		icon = GFX_focus_research2
+		
+		prerequisite = { focus = GGRE_industry_competition }
+		y = 6
+		x = 1
+		cost = 10
+		
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = GGRE_property_reform
+		icon = GFX_focus_generic_self_management
+		
+		prerequisite = { focus = GGRE_electronics_modernization }
+		y = 1
+		x = 3
+		cost = 10
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 1
+								include_locked = yes
+							}
+							is_on_continent = europe
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}				
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_new_construction
+		icon = GFX_goal_generic_construction
+		
+		prerequisite = { focus = GGRE_property_reform }
+		y = 2
+		x = 3
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = GGRE_construction1
+				bonus = 1.0
+				uses = 1
+				category = construction
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_land_registry
+		icon = GFX_goal_generic_consumer_goods
+		
+		prerequisite = { focus = GGRE_new_construction }
+		y = 3
+		x = 3
+		cost = 10
+		
+		completion_reward = {
+			consumer_good_factor = -0.1
+		}
+	}
+	
+	focus = {
+		id = GGRE_suburban_investment
+		icon = GFX_goal_generic_construct_civ_factory
+		
+		prerequisite = { focus = GGRE_land_registry }
+		y = 4
+		x = 3
+		cost = 10
+		
+				completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					is_on_continent = europe
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 1
+								include_locked = yes
+							}
+							is_on_continent = europe
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}				
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_home_improvement
+		icon = GFX_focus_generic_industry_2
+		
+		prerequisite = { focus = GGRE_suburban_investment }
+		y = 5
+		x = 3
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = GGRE_construction2
+				bonus = 1.0
+				uses = 1
+				category = construction
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_research_grants
+		icon = GFX_focus_research
+		
+		prerequisite = { focus = GGRE_home_improvement }
+		y = 6
+		x = 3
+		cost = 10
+		
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = GGRE_trade_reform
+		icon = GFX_goal_generic_construct_naval_dockyard
+		
+		prerequisite = { focus = GGRE_electronics_modernization }
+		y = 1
+		x = 5
+		cost = 10
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_excavation_machines
+		icon = GFX_generic_construction2
+		
+		prerequisite = { focus = GGRE_trade_reform }
+		y = 2
+		x = 5
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = GGRE_excavation
+				bonus = 1.0
+				uses = 1
+				category = excavation_tech
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_self_sufficiency
+		icon = GFX_goal_generic_oil_refinery
+		
+		prerequisite = { focus = GGRE_excavation_machines }
+		y = 3
+		x = 5
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = GGRE_refinery
+				bonus = 1.0
+				uses = 1
+				category = synth_resources
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_resource_expeditions
+		icon = GFX_focus_generic_steel
+		
+		prerequisite = {
+			focus = GGRE_self_sufficiency
+			focus = GGRE_land_registry
+		}
+		y = 4
+		x = 5
+		cost = 10
+		
+		completion_reward = {
+			add_ideas = GGRE_resource_expeditions
+		}
+	}
+	
+	focus = {
+		id = GGRE_sea_reclamation
+		icon = GFX_focus_hol_prepare_the_innundation_lines
+		
+		prerequisite = { focus = GGRE_resource_expeditions }
+		y = 5
+		x = 5
+		cost = 10
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_invite_students
+		icon = GFX_goal_generic_scientific_exchange
+		
+		prerequisite = {
+			focus = GGRE_sea_reclamation
+			focus = GGRE_military_academies
+			focus = GGRE_research_grants
+		}
+		y = 6
+		x = 5
+		cost = 10
+		
+		completion_reward = {
+			add_to_tech_sharing_group = greek_research_group
+			every_country = {
+				limit = {
+					is_in_faction_with = GRE
+				}
+				add_to_tech_sharing_group = greek_research_group
+			}
+		}
+	}
+			
 	#Beginning of the military route
 	focus = {
 		id = GGRE_army_effort
         text = "Rebuild the Army"
 		icon = GFX_goal_generic_allies_build_infantry
-		x = 2
+		x = 20
 		y = 0
-		cost = 10
+		cost = 5
 		search_filters = {  FOCUS_FILTER_RESEARCH }
 		
 		available_if_capitulated = yes
