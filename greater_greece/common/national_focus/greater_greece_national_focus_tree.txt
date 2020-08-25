@@ -28,7 +28,7 @@ focus_tree = {
 	default = no
 	reset_on_civilwar = no
 	
-	continuous_focus_position = { x = 50 y = 1001 }
+	continuous_focus_position = { x = 50 y = 1500 }
 
 	initial_show_position = {
 		focus = GGRE_sack_the_prime_minister #I don't know if i was supposed to change this. :|
@@ -1339,7 +1339,7 @@ focus_tree = {
 	
 	focus = {
 		id = GGRE_adriatic_red
-		icon = GFX_goal_generic_more_territory_claims
+		icon = GFX_goal_generic_more_territorial_claims
 		
 		prerequisite = { focus = GGRE_second_pillar }
 		y = 7
@@ -1578,10 +1578,8 @@ focus_tree = {
 		id = GGRE_abandoned_building
 		icon = GFX_goal_generic_construct_mil_factory
 		
-		prerequisite = {
-			focus = GGRE_modernized_workforce
-			focus = GGRE_land_registry
-		}
+		prerequisite = { focus = GGRE_modernized_workforce }
+		prerequisite = { focus = GGRE_land_registry }
 		y = 4
 		x = 1
 		cost = 10
@@ -1795,7 +1793,7 @@ focus_tree = {
 				name = GGRE_construction1
 				bonus = 1.0
 				uses = 1
-				category = construction
+				category = construction_tech
 			}
 		}
 	}
@@ -1810,7 +1808,7 @@ focus_tree = {
 		cost = 10
 		
 		completion_reward = {
-			consumer_good_factor = -0.1
+			consumer_goods_factor = -0.1
 		}
 	}
 	
@@ -1917,7 +1915,7 @@ focus_tree = {
 				name = GGRE_construction2
 				bonus = 1.0
 				uses = 1
-				category = construction
+				category = construction_tech
 			}
 		}
 	}
@@ -1983,7 +1981,7 @@ focus_tree = {
 	
 	focus = {
 		id = GGRE_excavation_machines
-		icon = GFX_generic_construction2
+		icon = GFX_goal_generic_construction2
 		
 		prerequisite = { focus = GGRE_trade_reform }
 		y = 2
@@ -2023,10 +2021,8 @@ focus_tree = {
 		id = GGRE_resource_expeditions
 		icon = GFX_focus_generic_steel
 		
-		prerequisite = {
-			focus = GGRE_self_sufficiency
-			focus = GGRE_land_registry
-		}
+		prerequisite = { focus = GGRE_self_sufficiency }
+		prerequisite = { focus = GGRE_land_registry }
 		y = 4
 		x = 5
 		cost = 10
@@ -2038,7 +2034,7 @@ focus_tree = {
 	
 	focus = {
 		id = GGRE_sea_reclamation
-		icon = GFX_focus_hol_prepare_the_innundation_lines
+		icon = GFX_focus_hol_prepare_the_inundation_lines
 		
 		prerequisite = { focus = GGRE_resource_expeditions }
 		y = 5
@@ -2090,7 +2086,7 @@ focus_tree = {
 			focus = GGRE_military_academies
 			focus = GGRE_research_grants
 		}
-		y = 6
+		y = 7
 		x = 5
 		cost = 10
 		
@@ -2107,10 +2103,9 @@ focus_tree = {
 			
 	#Beginning of the military route
 	focus = {
-		id = GGRE_army_effort
-        text = "Rebuild the Army"
-		icon = GFX_goal_generic_allies_build_infantry
-		x = 20
+		id = GGRE_prepare
+		icon = GFX_goal_generic_propaganda
+		x = 26
 		y = 0
 		cost = 5
 		search_filters = {  FOCUS_FILTER_RESEARCH }
@@ -2118,7 +2113,152 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
-			army_experience = 10
+			add_war_support = 0.05
+		}
+	}
+	
+	focus = {
+		id = GGRE_athenian_strategy
+		icon = GFX_goal_generic_occupy_states_coastal
+		
+		prerequisite = { focus = GGRE_prepare }
+		x = 20
+		y = 1
+		cost = 10
+		
+		completion_reward = {
+			navy_experience = 10
+			add_tech_bonus = {
+				name = navy_doc_bonus
+				bonus = 1.0
+				uses = 2
+				category = naval_doctrine
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_wooden_wall
+		icon = GFX_goal_generic_navy_cruiser
+		
+		prerequisite = { focus = GGRE_athenian_strategy }
+		x = 20
+		y = 2
+		cost = 10
+		
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = cruise_bonus
+				bonus = 1.0
+				uses = 2
+				category = cl_tech
+				category = ca_tech
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_navy_protect
+		icon = GFX_goal_generic_navy_anti_submarine
+		
+		prerequisite = { focus = GGRE_wooden_wall }
+		x = 20
+		y = 3
+		cost = 10
+		
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = destroy_bonus
+				bonus = 1.0
+				uses = 2
+				category = dd_tech
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_navy_disrupt
+		icon = GFX_goal_generic_navy_submarine
+		
+		prerequisite = { focus = GGRE_navy_protect }
+		x = 20
+		y = 4
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = sub_bonus
+				bonus = 1.0
+				uses = 2
+				category = ss_tech
+			}
+			add_tech_bonus = {
+				name = navy_doc_bonus2
+				bonus = 1.0
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_athenian_battleships
+		icon = GFX_goal_generic_navy_battleship
+		
+		prerequisite = { focus = GGRE_navy_disrupt }
+		x = 20
+		y = 5
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = battle_bonus
+				bonus = 1.0
+				uses = 2
+				category = bb_tech
+				category = bc_tech
+			}
+			add_tech_bonus = {
+				name = navy_doc_bonus3
+				bonus = 1.0
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_future_war
+		icon = GFX_goal_generic_navy_carrier
+		
+		prerequisite = { focus = GGRE_athenian_battleships }
+		x = 20
+		y = 6
+		cost = 10
+		
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = carrier_bonus
+				bonus = 1.5
+				uses = 2
+				category = cv_tech
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_spartan_strategy
+		icon = GFX_goal_generic_allies_build_infantry
+		
+		prerequisite = { focus = GGRE_prepare }
+		x = 22
+		y = 1
+		cost = 10
+		completion_reward = {
+			army_experience = 15
 			add_tech_bonus = {
 				name = land_doc_bonus
 				bonus = 1.0
@@ -2127,6 +2267,403 @@ focus_tree = {
 			}
 		}
 	}
+	
+	focus = {
+		id = GGRE_twin_general
+		icon = GFX_focus_generic_military_mission
+		
+		prerequisite = { focus = GGRE_spartan_strategy }
+		x = 22
+		y = 2
+		cost = 10
+		completion_reward = {
+			add_ideas = { GGRE_twin_general }
+		}
+	}
+	
+	focus = {
+		id = GGRE_hold_pass
+		icon = GFX_goal_generic_defence
+		
+		prerequisite = { focus = GGRE_twin_general }
+		x = 22
+		y = 3
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = mounatin_bonus
+				bonus = 1.0
+				uses = 1
+				category = mountaineers_tech
+			}
+			add_tech_bonus = {
+				name = mountain_time
+				ahead_reduction = 2
+				uses = 1
+				category = mountaineers_tech
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_superior_arms
+		icon = GFX_goal_generic_small_arms
+		
+		prerequisite = { focus = GGRE_hold_pass }
+		x = 22
+		y = 4
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = weapon_bonus
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_citizen_army
+		icon = GFX_focus_generic_manpower
+		
+		prerequisite = { focus = GGRE_superior_arms }
+		x = 22
+		y = 5
+		cost = 10
+		
+		completion_reward = {
+			add_ideas = { GGRE_citizen_army }
+		}
+	}
+
+	focus = {
+		id = GGRE_inflexible
+		icon = GFX_focus_generic_home_defense
+		
+		prerequisite = { focus = GGRE_citizen_army }
+		x = 22
+		y = 6
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = engineer_bonus
+				bonus = 1.0
+				uses = 1
+				category = engineers_tech
+			}
+			add_tech_bonus = {
+				name = engineer_time
+				ahead_reduction = 2
+				uses = 1
+				category = engineers_tech
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_makedonian_strategy
+		icon = GFX_goal_rhineland
+		
+		prerequisite = { focus = GGRE_prepare }
+		x = 24
+		y = 1
+		cost = 10
+		
+		completion_reward = {
+			army_experience = 15
+			add_tech_bonus = {
+				name = support_bonus
+				bonus = 1.0
+				uses = 1
+				category = support_tech
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_heir_alexander
+		icon = GFX_focus_generic_combined_arms
+		
+		prerequisite = { focus = GGRE_makedonian_strategy }
+		x = 24
+		y = 2
+		cost = 10
+		
+		completion_reward = {
+			add_ideas = { GGRE_heir_alexander }
+		}
+	}
+	
+	focus = {
+		id = GGRE_alexandrian_cavalry
+		icon = GFX_goal_generic_army_tanks
+		
+		prerequisite = { focus = GGRE_heir_alexander }
+		x = 24
+		y = 3
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = tank_bonus
+				bonus = 1.0
+				uses = 1
+				category = armor
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_makedonian_principles
+		icon = GFX_goal_generic_army_motorized
+		
+		prerequisite = { focus = GGRE_alexandrian_cavalry }
+		x = 24
+		y = 4
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				bonus = 1.0
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_modern_sarissa
+		icon = GFX_focus_secret_rearmament
+		
+		prerequisite = { focus = GGRE_makedonian_principles }
+		x = 24
+		y = 5
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = sarissa_bonus
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_siege_heritage
+		icon = GFX_goal_generic_army_artillery2
+		
+		prerequisite = { focus = GGRE_modern_sarissa }
+		x = 24
+		y = 6
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = artillery_bonus
+				bonus = 1.0
+				uses = 1
+				category = artillery 
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_archimedes_strategy
+		icon = GFX_goal_generic_build_airforce
+		
+		prerequisite = { focus = GGRE_prepare }
+		x = 29
+		y = 1
+		cost = 10
+		
+		completion_reward = {
+			if = { 
+				limit = {
+					AND = {
+						185 = {
+							free_building_slots = {
+								building = air_base
+								size > 1
+							}
+						}
+						185 = {
+							is_owned_and_controlled_by = GRE 
+						}
+					}
+				}
+				185 = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			if = { 
+				limit = {
+					AND = {
+						47 = {
+							free_building_slots = {
+								building = air_base
+								size > 1
+							}
+						}
+						47 = {
+							is_owned_and_controlled_by = GRE 
+						}
+					}
+				}
+				47 = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_icarus_wings
+		icon = GFX_goal_generic_CAS
+		
+		prerequisite = { focus = GGRE_archimedes_strategy }
+		x = 26
+		y = 2
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = cas_bonus
+				bonus = 1.0
+				uses = 1
+				category = cas_bomber
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_apollo_chariot
+		icon = GFX_goal_generic_air_bomber
+		
+		prerequisite = { focus = GGRE_archimedes_strategy }
+		x = 28
+		y = 2
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = bomber_bonus
+				bonus = 1.0
+				uses = 1
+				category = tactical_bomber
+				category = cat_strategic_bomber
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_poseidon_chariot
+		icon = GFX_goal_generic_air_naval_bomber
+		
+		prerequisite = { focus = GGRE_apollo_chariot }
+		x = 28
+		y = 3
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = naval_bonus
+				bonus = 1.0
+				uses = 1
+				category = naval_bomber
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_zeus
+		icon = GFX_goal_generic_air_fighter
+		
+		prerequisite = { focus = GGRE_archimedes_strategy }
+		x = 30
+		y = 2
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 1.0
+				uses = 1
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_storms
+		icon = GFX_goal_generic_air_fighter2
+		
+		prerequisite = { focus = GGRE_zeus }
+		x = 30
+		y = 3
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = car_bonus
+				bonus = 1.0
+				uses = 1
+				technology = cv_early_fighter
+				technology = cv_fighter1
+				technology = cv_fighter2
+				technology = cv_fighter3
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_hades
+		icon = GFX_focus_rocketry
+		
+		prerequisite = { focus = GGRE_archimedes_strategy }
+		x = 32
+		y = 2
+		cost = 10
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = rocket_bonus
+				bonus = 1.0
+				uses = 1
+				category = rocketry
+			}
+		}
+	}
+	
+	focus = {
+		id = GGRE_new_genius
+		icon = GFX_focus_wonderweapons
+		
+		prerequisite = { focus = GGRE_hades }
+		x = 32
+		y = 3
+		cost = 10
+		
+		completion_reward = {
+			set_country_flag = GGRE_genius_born
+		}
+	}
+	
 
 	# political paths
     # 0. First step: Sack the Prime Minister

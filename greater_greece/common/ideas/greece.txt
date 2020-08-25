@@ -247,6 +247,47 @@ ideas = {
 				local_resources_factor = 0.10
 			}
 		}
+		
+		GGRE_twin_general = {
+
+			picture = idea_chi_wargaming_division		
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_leader_start_defense_level = 1
+			}
+		}
+		
+		GGRE_citizen_army = {
+			allowed = { always = no }
+			
+			removal_cost = -1
+			picture = idea_mex_politicised_army_2
+			
+			modifier = {
+				conscription_factor = 0.1
+			}
+		}
+		
+		GGRE_heir_alexander = {
+			allowed = { always = no }
+			
+			removal_cost = -1
+			picture = idea_man_militarism
+			
+			modifier = {
+				army_leader_start_offense_level = 1
+			}
+		}
     }
 
     theorist = {
@@ -282,6 +323,24 @@ ideas = {
             
             traits = { air_warfare_theorist }
         }
+		
+		GGRE_nicholas_christofilos = {
+			ledger = army
+			
+			
+			allowed = {
+				original_tag = GRE
+				has_country_flag = GGRE_genius_born
+			}
+			
+
+			
+			research_bonus = {
+				nuclear = 0.15
+			}
+			
+			traits = { nuclear_scientist }
+		}
     }
 	# MILITARY
 	army_chief = {
